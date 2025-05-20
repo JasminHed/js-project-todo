@@ -1,6 +1,7 @@
 import React from "react"
 import useStore from "../store.jsx"
 
+//fetching todos from zustand + 3 buttons that shows tasks
 const ToDo = () => {
   const todos = useStore(state => state.todos)
   const addTodo = useStore(state => state.addTodo)
