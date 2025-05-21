@@ -1,13 +1,16 @@
 import React from 'react'
 import ToDo from "./components/ToDo.jsx"
+import GlobalStyle from "./styling/GlobalStyle.jsx"
 
 function App() {
   return (
-    <div>
-      <h1>To Do List</h1>
+    <>
+    <GlobalStyle />
+      <h1>My To Do List</h1>
       <ToDo />
-    </div>
+      </>
   )
+ 
 }
 
 export default App
