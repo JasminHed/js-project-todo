@@ -17,20 +17,22 @@ min-height: 100vh;
 line-height: 1.6;
 font-size: 16px;
 background-image: 
-linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url("/assets/Background2.jpg");
+linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url("/assets/Background5.jpg");
 background-repeat: no-repeat;
 background-size: cover;
-font-family: "Roboto", sans-serif;
+font-family: 'Poppins', sans-serif;
 background-position: center;
 color: var(--text-color);
 }
 
 :root {
---background-color: #fdf6f0;
---text-color: #FFFFFF;
---outline: #a1887f;
-  
+  --background-color: #fdf6f0; /* kan användas för fallback */
+  --text-color: #ffffff;
+  --outline: #a1887f;
+  --card-bg: #ffffffcc; /* halvtransparent vit */
+  --accent: #d7ccc8; /* varm grå-beige */
 }
+
 
 h1 {
 text-align: center;
