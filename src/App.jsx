@@ -6,7 +6,6 @@ function App() {
   return (
     <>
     <GlobalStyle />
-      <h1>Todays Focus</h1>
       <ToDo />
       </>
   )
