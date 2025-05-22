@@ -16,6 +16,11 @@ const Header = styled.div`
   }
 `;
 
+const Time = styled.div`
+  text-align: center;
+  margin-bottom: 40px;
+`;
+
 const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -27,6 +32,8 @@ const MainContainer = styled.div`
     display: flex;
     gap: 30px;
     justify-content: center;
+    align-items: start;
+    margin-top: 80px;
     flex-direction: row;
     height: calc(100vh - 150px);
   }
@@ -35,15 +42,13 @@ const MainContainer = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     place-items: center;
-    height: calc(100vh - 150px);
-
     margin: 0 auto;
+    justify-items: center;
+    align-items: start;
+    max-width: 900px;
+    gap: 40px;
+    margin-top: 80px;
   }
-`;
-
-const Time = styled.div`
-  text-align: center;
-  margin-bottom: 40px;
 `;
 
 const Reminder = styled.div`
@@ -62,11 +67,13 @@ const Reminder = styled.div`
     height: 220px;
     position: sticky;
     top: 0;
+    padding-top: 40px;
   }
 
   @media (min-width: 1024px) {
-    width: 320px;
+    width: 300px;
     height: 260px;
+    padding-top: 60px;
   }
 `;
 
@@ -99,6 +106,7 @@ const Form = styled.form`
     overflow-y: auto;
   }
 `;
+
 const BoxWrapper = styled.div`
   width: 90%;
   max-width: 300px;
@@ -106,6 +114,45 @@ const BoxWrapper = styled.div`
 
   @media (min-width: 668px) {
     width: auto;
+  }
+`;
+
+const InputRow = styled.div`
+  display: flex;
+  gap: 8px;
+
+  @media (min-width: 1024px) {
+    justify-content: center;
+  }
+`;
+
+const Input = styled.input`
+  padding: 10px 16px;
+  border: none;
+  max-width: 130px;
+  margin-top: 20px;
+
+  @media (min-width: 1024px) {
+    align-items: center;
+  }
+
+  &:focus {
+    outline: 2px solid var(--outline);
+  }
+`;
+
+const AddButton = styled.button`
+  border: none;
+  border-radius: 8px;
+  max-width: 50%;
+  margin: 0 auto;
+  padding: 10px 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+
+  &:checked {
+    border: 1px solid var(--outline);
   }
 `;
 
@@ -129,59 +176,6 @@ const TodoItem = styled.li`
   }
 `;
 
-const TaskList = styled.p`
-  text-align: center;
-  font-weight: bold;
-  margin-top: 16px;
-  color: var(--text-dark);
-`;
-
-const InputRow = styled.div`
-  display: flex;
-  gap: 8px;
-
-  @media (min-width: 1024px) {
-    justify-content: center;
-  }
-`;
-
-const Input = styled.input`
-  padding: 10px 16px;
-  border: none;
-  max-width: 130px;
-
-  @media (min-width: 1024px) {
-    align-items: center;
-  }
-
-  &:focus {
-    outline: 2px solid var(--outline);
-  }
-`;
-
-const AddButton = styled.button`
-  border: none;
-  border-radius: 8px;
-  max-width: 50%;
-  margin: 0 auto;
-  padding: 10px 10px;
-  margin-top: 10px;
-  cursor: pointer;
-
-  &:checked {
-    border: 1px solid var(--outline);
-  }
-`;
-
-const TaskText = styled.span`
-  flex: 1;
-  margin: 0 4px;
-  word-break: break-word;
-  max-width: 100%;
-  text-decoration: ${(props) => (props.completed ? "line-through" : "none")};
-  color: var(--text-dark);
-`;
-
 const StyledCheckBox = styled.input.attrs({ type: "checkbox" })`
   appearance: none;
   margin-right: 4px;
@@ -199,6 +193,15 @@ const StyledCheckBox = styled.input.attrs({ type: "checkbox" })`
   }
 `;
 
+const TaskText = styled.span`
+  flex: 1;
+  margin: 0 4px;
+  word-break: break-word;
+  max-width: 100%;
+  text-decoration: ${(props) => (props.completed ? "line-through" : "none")};
+  color: var(--text-dark);
+`;
+
 const RemoveButton = styled.button`
   border: none;
   border-radius: 8px;
@@ -207,6 +210,21 @@ const RemoveButton = styled.button`
   cursor: pointer;
   margin-top: 5px;
   margin-bottom: 5px;
+`;
+
+const TaskList = styled.p`
+  text-align: center;
+  font-weight: bold;
+  margin-top: 16px;
+  color: var(--text-dark);
+
+  @media (min-width: 668px) {
+    margin-top: 40px;
+  }
+
+  @media (min-width: 1024px) {
+    margin-top: 80px;
+  }
 `;
 
 const TaskCount = styled.p`
