@@ -268,86 +268,90 @@ const ToDo = () => {
 
   return (
     <>
-      <Header>
-        <h1>Todays Focus</h1>
-        <Time>
-          <h2>{now}</h2>
-          <p>{today}</p>
-        </Time>
-      </Header>
-      <MainContainer>
-        <BoxWrapper>
-          <Reminder>
-            <h3>Reminder</h3>
-            <p>Small steps everyday lead to big changes</p>
-          </Reminder>
-        </BoxWrapper>
+      <header>
+        <Header>
+          <h1>Todays Focus</h1>
+          <Time>
+            <h2>{now}</h2>
+            <p>{today}</p>
+          </Time>
+        </Header>
+      </header>
+      <main>
+        <MainContainer>
+          <BoxWrapper>
+            <Reminder>
+              <h3>Reminder</h3>
+              <p>Small steps everyday lead to big changes</p>
+            </Reminder>
+          </BoxWrapper>
 
-        <BoxWrapper>
-          <Form onSubmit={handleSubmit}>
-            <InputRow>
-              <Input
-                type="text"
-                value={newTask}
-                onChange={(e) => setNewTask(e.target.value)}
-                placeholder="Add a new task"
-                aria-label="Add a new task"
-                required
-                maxLength={30}
-              />
+          <BoxWrapper>
+            <Form onSubmit={handleSubmit}>
+              <InputRow>
+                <Input
+                  type="text"
+                  value={newTask}
+                  onChange={(e) => setNewTask(e.target.value)}
+                  placeholder="Add a new task"
+                  aria-label="Add a new task"
+                  required
+                  maxLength={30}
+                />
 
-              <Input
-                type="text"
-                value={notes}
-                onChange={(e) => setNotes(e.target.value)}
-                placeholder="Notes (optional)"
-                aria-label="Notes"
-                maxLength={30}
-              />
-            </InputRow>
-            <AddButton type="submit" aria-label="Add a new task">
-              Add Task
-            </AddButton>
-            <TodoList>
-              {todos.map((todo) => (
-                <TodoItem key={todo.id}>
-                  <StyledCheckBox
-                    type="checkbox"
-                    checked={todo.completed}
-                    onChange={() => toggleTodo(todo.id)}
-                    aria-label={`Mark "${todo.text}" as ${
-                      todo.completed ? "incomplete" : "complete"
-                    }`}
-                  />
-                  <TaskText completed={todo.completed}>
-                    {todo.text}
-                    {todo.notes && ` - ${todo.notes}`}
-                  </TaskText>
-                  {todo.completed && (
-                    <AnimationWrapper>
-                      <Lottie animationData={Animation} loop={false} />
-                    </AnimationWrapper>
-                  )}
-                  <RemoveButton
-                    onClick={() => removeTodo(todo.id)}
-                    aria-label={`Remove task: ${todo.text}`}
-                  >
-                    Remove Task
-                  </RemoveButton>
-                </TodoItem>
-              ))}
-            </TodoList>
-            {todos.length > 0 && (
-              <TaskCount>{todos.length} Task total</TaskCount>
-            )}
-            {todos.length === 0 && (
-              <TaskList>
-                You have no tasks at the moment. Enjoy your day!
-              </TaskList>
-            )}
-          </Form>
-        </BoxWrapper>
-      </MainContainer>
+                <Input
+                  type="text"
+                  value={notes}
+                  onChange={(e) => setNotes(e.target.value)}
+                  placeholder="Notes (optional)"
+                  aria-label="Notes"
+                  maxLength={30}
+                />
+              </InputRow>
+              <AddButton type="submit" aria-label="Add a new task">
+                Add Task
+              </AddButton>
+              <TodoList>
+                {todos.map((todo) => (
+                  <TodoItem key={todo.id}>
+                    <StyledCheckBox
+                      type="checkbox"
+                      checked={todo.completed}
+                      onChange={() => toggleTodo(todo.id)}
+                      aria-label={`Mark "${todo.text}" as ${
+                        todo.completed ? "incomplete" : "complete"
+                      }`}
+                    />
+                    <TaskText completed={todo.completed}>
+                      {todo.text}
+                      {todo.notes && ` - ${todo.notes}`}
+                    </TaskText>
+                    {todo.completed && (
+                      <AnimationWrapper>
+                        <Lottie animationData={Animation} loop={false} />
+                      </AnimationWrapper>
+                    )}
+                    <RemoveButton
+                      onClick={() => removeTodo(todo.id)}
+                      aria-label={`Remove task: ${todo.text}`}
+                    >
+                      Remove Task
+                    </RemoveButton>
+                  </TodoItem>
+                ))}
+              </TodoList>
+              {todos.length > 0 && (
+                <TaskCount>{todos.length} Task total</TaskCount>
+              )}
+              {todos.length === 0 && (
+                <TaskList>
+                  You have no tasks at the moment. Enjoy your day!
+                </TaskList>
+              )}
+            </Form>
+          </BoxWrapper>
+        </MainContainer>
+      </main>
     </>
   );
 };
