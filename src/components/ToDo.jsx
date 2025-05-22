@@ -1,9 +1,35 @@
 import React, { useState } from "react";
 import useStore from "../store.jsx";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import moment from "moment";
 import Lottie from "lottie-react";
 import Animation from "../animations/star.json";
+
+const slideIn = keyframes`
+  from {
+    transform: translateY(-30px) rotate(-10deg) scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) rotate(-5deg) scale(1.05);
+    opacity: 1;
+  }
+`;
+
+const CornerImage = styled.img`
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 200px;
+  height: auto;
+  z-index: 10;
+  animation: ${slideIn} 0.8s ease-out;
+  transform: rotate(-5deg) scale(1.05);
+
+  @media (max-width: 667px) {
+    display: none;
+  }
+`;
 
 const Header = styled.div`
   text-align: center;
@@ -185,10 +211,10 @@ const StyledCheckBox = styled.input.attrs({ type: "checkbox" })`
   width: 15px;
   height: 15px;
   cursor: pointer;
-  background-color: #f9a8d4;
+  background-color: var(--outline);
 
   &:checked {
-    background-color: #ec4899;
+    background-color: var(--text-dark);
     border: 2px solid var(--text-color);
   }
 `;
@@ -247,6 +273,7 @@ const AnimationWrapper = styled.div`
   }
 `;
 
+//retrieves todo actions and data from the Zustand store
 const ToDo = () => {
   const todos = useStore((state) => state.todos);
   const addTodo = useStore((state) => state.addTodo);
@@ -268,6 +295,7 @@ const ToDo = () => {
 
   return (
     <>
+      <CornerImage src="/assets/post.png" alt="Positive decoration" />
       <header>
         <Header>
           <h1>Todays Focus</h1>
@@ -318,6 +346,7 @@ const ToDo = () => {
                       type="checkbox"
                       checked={todo.completed}
                       onChange={() => toggleTodo(todo.id)}
+                      //action of the checkbox depending on the task's status.
                       aria-label={`Mark "${todo.text}" as ${
                         todo.completed ? "incomplete" : "complete"
                       }`}
@@ -332,6 +361,7 @@ const ToDo = () => {
                       </AnimationWrapper>
                     )}
                     <RemoveButton
+                      //when clicked, removes the specific todo by its ID and provides an accessible label like “Remove task: Buy milk” for screen readers.
                       onClick={() => removeTodo(todo.id)}
                       aria-label={`Remove task: ${todo.text}`}
                     >

@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
+//manages the todo list (add, toggle, remove) and stores it in local storage so it stays even when you reload the page.
 const useStore = create(
   persist(
     (set) => ({
