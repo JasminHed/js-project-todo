@@ -9,13 +9,14 @@ const GlobalStyle = createGlobalStyle`
 }
 
 html, body {
-  height: 100vh;  
+  height: auto;
   overflow-x: hidden;
+
  
 }
 
 body {
-  height: 100vh;
+  height: auto;
   line-height: 1.6;
   font-size: 16px;
   background-image: 
@@ -25,7 +26,7 @@ body {
   font-family: 'Poppins', sans-serif;
   background-position: center;
   color: var(--text-color);
-  overflow: hidden;
+  
  
 }
 
@@ -57,13 +58,14 @@ h1 {
 
 h2 {
   font-size: 20px;
+
 }
 
 h3 {
-
   font-size: 18px;
   text-align: center;
   color: var(--text-dark);
+ 
 }
 
 `;

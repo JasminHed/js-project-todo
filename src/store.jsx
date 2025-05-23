@@ -6,11 +6,11 @@ const useStore = create(
   persist(
     (set) => ({
       todos: [],
-      addTodo: (text, notes = "") =>
+      addTodo: (text, notes, tag = "") =>
         set((state) => ({
           todos: [
             ...state.todos,
-            { id: Date.now(), text, notes, completed: false },
+            { id: Date.now(), text, notes, tag, completed: false },
           ],
         })),
 
