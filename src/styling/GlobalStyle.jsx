@@ -1,4 +1,4 @@
-import {createGlobalStyle} from "styled-components"
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -55,8 +55,16 @@ h1 {
   margin-bottom: 30px;
 }
 
+h2 {
+  font-size: 20px;
+}
 
+h3 {
 
+  font-size: 18px;
+  text-align: center;
+  color: var(--text-dark);
+}
 
-`
-export default GlobalStyle
+`;
+export default GlobalStyle;

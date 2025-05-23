@@ -5,6 +5,7 @@ import moment from "moment";
 import Lottie from "lottie-react";
 import Animation from "../animations/star.json";
 
+//control + styling of postit animation slide in + hanging
 const slideIn = keyframes`
   from {
     transform: translateY(-30px) rotate(-10deg) scale(0.9);
@@ -23,7 +24,7 @@ const CornerImage = styled.img`
   width: 200px;
   height: auto;
   z-index: 10;
-  animation: ${slideIn} 0.8s ease-out;
+  animation: ${slideIn} 1.5s ease-out;
   transform: rotate(-5deg) scale(1.05);
 
   @media (max-width: 667px) {
@@ -309,13 +310,14 @@ const ToDo = () => {
         <MainContainer>
           <BoxWrapper>
             <Reminder>
-              <h3>Reminder</h3>
+              <h2>Reminder</h2>
               <p>Small steps everyday lead to big changes</p>
             </Reminder>
           </BoxWrapper>
 
           <BoxWrapper>
             <Form onSubmit={handleSubmit}>
+              <h3>Write your task and notes here.</h3>
               <InputRow>
                 <Input
                   type="text"
@@ -336,6 +338,7 @@ const ToDo = () => {
                   maxLength={30}
                 />
               </InputRow>
+
               <AddButton type="submit" aria-label="Add a new task">
                 Add Task
               </AddButton>
@@ -355,6 +358,8 @@ const ToDo = () => {
                       {todo.text}
                       {todo.notes && ` - ${todo.notes}`}
                     </TaskText>
+                    {todo.tag && <Tag tag={todo.tag}>{todo.tag}</Tag>}
+
                     {todo.completed && (
                       <AnimationWrapper>
                         <Lottie animationData={Animation} loop={false} />
