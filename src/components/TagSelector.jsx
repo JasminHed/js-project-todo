@@ -8,17 +8,25 @@ const TagWrapper = styled.div`
   justify-content: center;
 `;
 
-const TagButton = styled.button`
+const TagButton = styled.button.attrs({ type: "button" })`
   background-color: ${(props) => props.color};
+  color: var(--text-dark);
   margin-top: 20px;
   margin-bottom: 20px;
-  border: none;
+  border: ${(props) =>
+    props.selected ? "2px solid var(--text-dark)" : "none"};
   border-radius: 8px;
   justify-content: center;
   padding: 6px 12px;
   color: var(--text-dark);
   cursor: pointer;
-  opacity: ${(props) => (props.selected ? 1 : 0.6)};
+  opacity: ${(props) => (props.selected ? 1 : 0.85)};
+
+  &:hover {
+    opacity: 1;
+    filter: brightness(0.95);
+    box-shadow: 0 0 0 2px var(--text-dark);
+  }
 `;
 
 const tags = [
@@ -35,7 +43,9 @@ const TagSelector = ({ selectedTag, setSelectedTag }) => {
           key={tag.label}
           color={tag.color}
           selected={selectedTag === tag.label}
-          onClick={() => setSelectedTag(tag.label)}
+          onClick={() =>
+            setSelectedTag(selectedTag === tag.label ? null : tag.label)
+          }
         >
           {tag.label}
         </TagButton>

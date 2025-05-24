@@ -8,7 +8,7 @@ const tagColors = {
 };
 
 const Dot = styled.span`
-  background-color: ${(props) => props.color || "#ccc"};
+  background-color: ${(props) => props.color || "black"};
   border-radius: 50%;
   width: 12px;
   height: 12px;
@@ -17,7 +17,7 @@ const Dot = styled.span`
 `;
 
 const TagDot = ({ tag }) => {
-  const color = tagColors[tag] || "#ccc";
+  const color = tagColors[tag] || "black";
   return <Dot color={color} title={tag} aria-label={`Tag: ${tag}`} />;
 };
 

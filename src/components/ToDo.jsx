@@ -23,86 +23,61 @@ const Time = styled.div`
   margin-bottom: 40px;
 `;
 
+const TableHead = styled.div`
+  display: none;
+
+  @media (min-width: 668px) {
+    display: grid;
+    grid-template-columns: 40px 40px 1fr 1fr 40px 100px;
+    padding: 10px 0;
+    font-weight: bold;
+    border-bottom: 2px solid var(--outline);
+    text-align: left;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    gap: 8px;
+  }
+`;
+
 const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   height: auto;
-
-  @media (min-width: 668px) {
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-    align-items: start;
-    margin-top: 80px;
-    flex-direction: row;
-    margin-top: 60px;
-  }
-
-  @media (min-width: 1024px) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    place-items: center;
-    margin: 0 auto;
-    justify-items: center;
-    align-items: start;
-    max-width: 900px;
-    gap: 40px;
-    margin-top: 40px;
-  }
 `;
 
 const Form = styled.form`
   display: flex;
   flex-direction: column;
   border-radius: 10px;
-  padding: 24px;
-  row-gap: 20px;
-  background-color: var(--card-bg);
-  margin: 0 auto;
-  margin-top: 8px;
+  padding: 16px;
+  margin: 8px auto 0;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  width: 100%;
-
-  @media (max-width: 667px) {
-    min-height: 80vh;
-    height: auto;
-    overflow: visible;
-    margin-bottom: 80px;
-  }
+  width: 95%;
 
   @media (min-width: 668px) {
-    width: 300px;
-    height: auto;
-    overflow: visible;
-    //overflow-y: auto;
-    margin-bottom: 80px;
+    width: 90%;
+    padding: 20px;
   }
 
   @media (min-width: 1024px) {
-    width: 400px;
-    height: auto;
-    overflow: visible;
-    //overflow-y: auto;
-  }
-`;
-
-const BoxWrapper = styled.div`
-  width: 90%;
-  max-width: 300px;
-  margin-bottom: 16px;
-
-  @media (min-width: 668px) {
-    width: auto;
+    width: 100%;
+    max-width: 1000px;
+    padding: 24px;
+    margin-bottom: 60px;
   }
 `;
 
 const InputRow = styled.div`
   display: flex;
-  gap: 8px;
+  flex-direction: row;
+  gap: 12px;
+  margin-top: 12px;
 
-  @media (min-width: 1024px) {
+  @media (min-width: 668px) {
+    flex-direction: row;
     justify-content: center;
   }
 `;
@@ -110,12 +85,11 @@ const InputRow = styled.div`
 const Input = styled.input`
   padding: 12px 16px;
   border: none;
-  max-width: 120px;
-  margin-top: 20px;
-  align-items: center;
+  width: 100%;
+  margin-top: 0;
 
-  @media (min-width: 1024px) {
-    align-items: center;
+  @media (min-width: 668px) {
+    max-width: 250px;
   }
 
   &:focus {
@@ -126,14 +100,15 @@ const Input = styled.input`
 const AddButton = styled.button`
   border: none;
   border-radius: 8px;
-  width: 80%;
-  margin: 0 auto;
+  width: 100%;
   padding: 12px;
   cursor: pointer;
-  margin-top: 20px;
+  margin: 20px 0 0;
 
-  &:checked {
-    border: 1px solid var(--outline);
+  @media (min-width: 668px) {
+    width: 80%;
+    max-width: 300px;
+    margin: 20px auto 0;
   }
 
   &:hover,
@@ -144,24 +119,33 @@ const AddButton = styled.button`
   }
 `;
 
+const TodoItem = styled.li`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; /* NYTT: För wrapping */
+  align-items: center;
+  padding: 12px;
+  width: 100%;
+  max-width: 800px;
+  border-bottom: 1px solid #eee;
+  gap: 8px;
+
+  @media (min-width: 668px) {
+    display: grid;
+    grid-template-columns: 40px 40px 1fr 1fr 40px 100px;
+    flex-wrap: nowrap;
+    padding: 8px 0;
+  }
+`;
+
 const TodoList = styled.ul`
   list-style: none;
   padding: 0;
   width: 100%;
-  max-width: 300px;
-  margin-top: 32px;
-`;
-
-const TodoItem = styled.li`
   display: flex;
+  flex-direction: column;
   align-items: center;
-  position: relative;
-  gap: 4px;
-
-  input[type="checkbox"] {
-    margin-right: 12px;
-    transform: scale(1.2);
-  }
+  margin-top: 16px;
 `;
 
 const StyledCheckBox = styled.input.attrs({ type: "checkbox" })`
@@ -183,19 +167,21 @@ const TaskText = styled.span`
   flex: 1;
   margin: 0 4px;
   word-break: break-word;
-  max-width: 100%;
   text-decoration: ${(props) => (props.$completed ? "line-through" : "none")};
   color: var(--text-dark);
+  min-width: 100px;
 `;
 
 const RemoveButton = styled.button`
   border: none;
   border-radius: 8px;
-  max-width: 100px;
-  padding: 5px 5px;
+  width: 80px;
+  padding: 5px;
   cursor: pointer;
-  margin-top: 5px;
-  margin-bottom: 5px;
+
+  @media (min-width: 668px) {
+    width: 100px;
+  }
 
   &:hover,
   &:focus-visible {
@@ -221,12 +207,10 @@ const TaskList = styled.p`
 `;
 
 const TaskCount = styled.p`
-  margin-left: 15px;
-  margin-top: 8px;
+  margin: 40px auto 0;
   font-size: 14px;
   color: var(--text-dark);
-  margin: 0 auto;
-  margin-top: 40px;
+  text-align: center;
 `;
 
 const ToDo = () => {
@@ -263,80 +247,74 @@ const ToDo = () => {
 
       <main>
         <MainContainer>
-          <BoxWrapper>
-            <ReminderBox />
-          </BoxWrapper>
+          <ReminderBox />
 
-          <BoxWrapper>
-            <Form onSubmit={handleSubmit}>
-              <h3>Write your task and notes here.</h3>
-              <InputRow>
-                <Input
-                  type="text"
-                  value={newTask}
-                  onChange={(e) => setNewTask(e.target.value)}
-                  placeholder="Add task"
-                  aria-label="Add a new task"
-                  required
-                  maxLength={30}
-                />
-                <Input
-                  type="text"
-                  value={notes}
-                  onChange={(e) => setNotes(e.target.value)}
-                  placeholder="Add notes"
-                  aria-label="Notes"
-                  maxLength={30}
-                />
-              </InputRow>
-
-              <TagSelector
-                selectedTag={selectedTag}
-                setSelectedTag={setSelectedTag}
+          <Form onSubmit={handleSubmit}>
+            <h3>Write your task and notes here.</h3>
+            <InputRow>
+              <Input
+                type="text"
+                value={newTask}
+                onChange={(e) => setNewTask(e.target.value)}
+                placeholder="Add task"
+                aria-label="Add a new task"
+                required
+                maxLength={30}
               />
+              <Input
+                type="text"
+                value={notes}
+                onChange={(e) => setNotes(e.target.value)}
+                placeholder="Add notes"
+                aria-label="Notes"
+                maxLength={30}
+              />
+            </InputRow>
 
-              <AddButton type="submit" aria-label="Add a new task">
-                Add Task
-              </AddButton>
+            <TagSelector
+              selectedTag={selectedTag}
+              setSelectedTag={setSelectedTag}
+            />
 
-              <TodoList>
-                {todos.map((todo) => (
-                  <TodoItem key={todo.id}>
-                    <StyledCheckBox
-                      type="checkbox"
-                      checked={todo.completed}
-                      onChange={() => toggleTodo(todo.id)}
-                      aria-label={`Mark "${todo.text}" as ${
-                        todo.completed ? "incomplete" : "complete"
-                      }`}
-                    />{" "}
-                    {todo.tag && <TagDot tag={todo.tag} />}
-                    <TaskText $completed={todo.completed}>
-                      {todo.text}
-                      {todo.notes && ` - ${todo.notes}`}
-                    </TaskText>
-                    {todo.completed && <StarAnimation />}
-                    <RemoveButton
-                      onClick={() => removeTodo(todo.id)}
-                      aria-label={`Remove task: ${todo.text}`}
-                    >
-                      Remove 🗑️
-                    </RemoveButton>
-                  </TodoItem>
-                ))}
-              </TodoList>
-              {todos.length > 0 && (
-                <>
-                  <TaskCount>{todos.length} Task total</TaskCount>
-                </>
-              )}
-              {todos.length === 0 && (
-                <TaskList>
-                  You have no tasks at the moment. Enjoy your day!
-                </TaskList>
-              )}
-            </Form>
-          </BoxWrapper>
+            <AddButton type="submit" aria-label="Add a new task">
+              Add Task
+            </AddButton>
+            <TableHead>
+              <span>✔</span>
+              <span>Tag</span>
+              <span>Task</span>
+              <span>Notes</span>
+              <span>★</span>
+              <span>Remove</span>
+            </TableHead>
+            <TodoList>
+              {todos.map((todo) => (
+                <TodoItem key={todo.id}>
+                  <StyledCheckBox
+                    checked={todo.completed}
+                    onChange={() => toggleTodo(todo.id)}
+                  />
+                  {todo.tag && <TagDot tag={todo.tag} />}
+                  <TaskText $completed={todo.completed}>{todo.text}</TaskText>
+                  <span>{todo.notes}</span>
+                  {todo.completed ? <StarAnimation /> : <span />}
+                  <RemoveButton onClick={() => removeTodo(todo.id)}>
+                    Remove 🗑️
+                  </RemoveButton>
+                </TodoItem>
+              ))}
+            </TodoList>
+            {todos.length > 0 && (
+              <>
+                <TaskCount>{todos.length} Task total</TaskCount>
+              </>
+            )}
+            {todos.length === 0 && (
+              <TaskList>
+                You have no tasks at the moment. Enjoy your day!
+              </TaskList>
+            )}
+          </Form>
         </MainContainer>
       </main>
     </>

@@ -9,33 +9,46 @@ const GlobalStyle = createGlobalStyle`
 }
 
 html, body {
-  height: auto;
+  width: 100%;
   overflow-x: hidden;
-
- 
 }
+
 
 body {
   height: auto;
   line-height: 1.6;
   font-size: 16px;
-  background-image: 
-  linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url("/assets/Background5.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: var(--background-color);
+  //background-image: 
+  //linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url("/assets/Background5.jpg");
+  //background-repeat: no-repeat;
+  //background-size: cover;
   font-family: 'Poppins', sans-serif;
-  background-position: center;
-  color: var(--text-color);
-  
- 
+  //background-position: center;
+  color: var(--text-dark);
+  background-color: var(--card-bg);
+
+}
+
+
+@media (max-width: 1023px) {
+  body {
+    height: auto;
+    overflow-y: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    height: auto;        
+    overflow-y: auto; 
+  }
 }
 
 @media (min-width: 668px) {
 body {
   background-position: bottom center;
 }
-
-
 }
 
 :root {
