@@ -17,8 +17,9 @@ const Dot = styled.span`
 `;
 
 const TagDot = ({ tag }) => {
-  const color = tagColors[tag] || "black";
+  const color = tagColors[tag] || "black"; // Sets background color to the color prop passed to the component, defaults to black if no color is provided.
   return <Dot color={color} title={tag} aria-label={`Tag: ${tag}`} />;
+  //passing the color pop from tagcolor
 };
 
 export default TagDot;

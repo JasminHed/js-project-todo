@@ -15,7 +15,7 @@ html, body {
 
 
 body {
-  height: auto;
+  min-height: 100vh;
   line-height: 1.6;
   font-size: 16px;
   background-color: var(--background-color);
@@ -47,7 +47,7 @@ body {
 
 @media (min-width: 668px) {
 body {
-  background-position: bottom center;
+background-position: bottom center;
 }
 }
 
@@ -55,7 +55,7 @@ body {
   --background-color: #fdf6f0; 
   --text-color: #ffffff;
   --outline: #a1887f;
-  --card-bg: #ffffffcc; 
+  --card-bg: #ffffff99;; 
   --accent: #d7ccc8; 
   --text-dark: #333333;
 

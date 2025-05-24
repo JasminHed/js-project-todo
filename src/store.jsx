@@ -1,3 +1,4 @@
+//Store manages global state for todos across all components. Without store we have to send props between all components (codesnippet that can be reused)
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 

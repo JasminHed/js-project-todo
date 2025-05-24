@@ -4,7 +4,6 @@ import styled from "styled-components";
 import moment from "moment";
 import ReminderBox from "./ReminderBox.jsx";
 import TagSelector from "./TagSelector.jsx";
-import StarAnimation from "./Animation.jsx";
 import TagDot from "./TagDot.jsx";
 
 const Header = styled.div`
@@ -29,7 +28,7 @@ const TableHead = styled.div`
 
   @media (min-width: 668px) {
     display: grid;
-    grid-template-columns: 40px 40px 1fr 1fr 40px 100px;
+    grid-template-columns: 150px 130px 2fr 60px 100px;
     padding: 10px 0;
     font-weight: bold;
     border-bottom: 2px solid var(--outline);
@@ -58,6 +57,7 @@ const Form = styled.form`
   margin: 8px auto 0;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   width: 95%;
+  margin-bottom: 15px;
 
   @media (min-width: 668px) {
     width: 90%;
@@ -124,17 +124,17 @@ const AddButton = styled.button`
 const TodoItem = styled.li`
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap; /* for wrapping on miniscreen */
+  flex-wrap: nowrap; /* for wrapping on miniscreen */
   align-items: center;
-  padding: 12px;
+  padding: 10px;
   width: 100%;
   max-width: 800px;
   border-bottom: 1px solid var(--outline);
-  gap: 8px;
+  gap: 6px;
 
   @media (min-width: 668px) {
     display: grid;
-    grid-template-columns: 40px 40px 1fr 1fr 40px 100px;
+    grid-template-columns: 150px 130px 2fr 60px 100px;
     flex-wrap: nowrap;
     padding: 8px 0;
   }
@@ -208,13 +208,21 @@ const TaskList = styled.p`
   }
 `;
 
+const NotesText = styled.span`
+  word-break: break-word;
+
+  @media (max-width: 668px) {
+    display: none;
+  }
+`;
+
 const TaskCount = styled.p`
   margin: 40px auto 0;
   font-size: 14px;
   color: var(--text-dark);
   text-align: center;
 `;
-
+//Todo component with state management hooks for todos, form inputs (task, notes, tag), and a submit handler that adds new todos and clears the form.
 const ToDo = () => {
   const todos = useStore((state) => state.todos);
   const addTodo = useStore((state) => state.addTodo);
@@ -266,10 +274,10 @@ const ToDo = () => {
               <Input
                 type="text"
                 value={notes}
-                onChange={(e) => setNotes(e.target.value)}
+                onChange={(e) => setNotes(e.target.value)} //gets the current text from the input field when user types.
                 placeholder="Add notes"
-                aria-label="Notes"
-                maxLength={30}
+                aria-label="Write Notes"
+                maxLength={15}
               />
             </InputRow>
 
@@ -282,25 +290,27 @@ const ToDo = () => {
               Add Task
             </AddButton>
             <TableHead>
-              <span>✔</span>
-              <span>Tag</span>
               <span>Task</span>
+              <span>Tag</span>
               <span>Notes</span>
-              <span>★</span>
+              <span>✔</span>
               <span>Remove</span>
             </TableHead>
             <TodoList>
               {todos.map((todo) => (
                 <TodoItem key={todo.id}>
+                  <TaskText $completed={todo.completed}>{todo.text}</TaskText>
+                  {todo.tag && <TagDot tag={todo.tag} />}
+                  <NotesText>{todo.notes}</NotesText>
                   <StyledCheckBox
                     checked={todo.completed}
                     onChange={() => toggleTodo(todo.id)}
                   />
-                  {todo.tag && <TagDot tag={todo.tag} />}
-                  <TaskText $completed={todo.completed}>{todo.text}</TaskText>
-                  <span>{todo.notes}</span>
-                  {todo.completed ? <StarAnimation /> : <span />}
-                  <RemoveButton onClick={() => removeTodo(todo.id)}>
+                  <RemoveButton
+                    onClick={() => removeTodo(todo.id)}
+                    type="remove"
+                    aria-label="Remove task"
+                  >
                     Remove 🗑️
                   </RemoveButton>
                 </TodoItem>

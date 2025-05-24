@@ -39,6 +39,7 @@ const TagSelector = ({ selectedTag, setSelectedTag }) => {
   return (
     <TagWrapper>
       {tags.map((tag) => (
+        //Creates a clickable tag button that toggles selection and style based on the tag's color and selection state.
         <TagButton
           key={tag.label}
           color={tag.color}
