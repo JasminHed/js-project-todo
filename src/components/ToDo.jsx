@@ -21,6 +21,7 @@ const Header = styled.div`
 const Time = styled.div`
   text-align: center;
   margin-bottom: 40px;
+  color: var(--text-color);
 `;
 
 const TableHead = styled.div`
@@ -51,6 +52,7 @@ const MainContainer = styled.div`
 const Form = styled.form`
   display: flex;
   flex-direction: column;
+  background-color: var(--card-bg);
   border-radius: 10px;
   padding: 16px;
   margin: 8px auto 0;
@@ -122,12 +124,12 @@ const AddButton = styled.button`
 const TodoItem = styled.li`
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap; /* NYTT: För wrapping */
+  flex-wrap: wrap; /* for wrapping on miniscreen */
   align-items: center;
   padding: 12px;
   width: 100%;
   max-width: 800px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--outline);
   gap: 8px;
 
   @media (min-width: 668px) {

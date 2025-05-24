@@ -19,12 +19,12 @@ body {
   line-height: 1.6;
   font-size: 16px;
   background-color: var(--background-color);
-  //background-image: 
-  //linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url("/assets/Background5.jpg");
-  //background-repeat: no-repeat;
-  //background-size: cover;
+  background-image: 
+  linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url("/assets/Background5.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   font-family: 'Poppins', sans-serif;
-  //background-position: center;
+  background-position: center;
   color: var(--text-dark);
   background-color: var(--card-bg);
 
@@ -67,6 +67,7 @@ h1 {
   font-size: 24px;
   margin-top: 30px;
   margin-bottom: 30px;
+  color: var(--text-color);
 }
 
 h2 {
