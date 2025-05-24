@@ -158,7 +158,7 @@ const StyledCheckBox = styled.input.attrs({ type: "checkbox" })`
   width: 15px;
   height: 15px;
   cursor: pointer;
-  background-color: var(--text-dark);
+  background-color: var(--accent);
 
   &:checked {
     border: 1px solid var(--accent);
@@ -305,6 +305,8 @@ const ToDo = () => {
                   <StyledCheckBox
                     checked={todo.completed}
                     onChange={() => toggleTodo(todo.id)}
+                    type="checkbox"
+                    aria-label="Checkbox"
                   />
                   <RemoveButton
                     onClick={() => removeTodo(todo.id)}
