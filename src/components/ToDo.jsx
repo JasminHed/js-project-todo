@@ -230,6 +230,17 @@ const CountWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+
+  @media (min-width: 668px) {
+    justify-content: center;
+    flex-direction: row;
+  }
+`;
+
+const Count = styled.div`
+  margin-top: 10px;
+  margin-left: 4px;
+  margin-right: 2px;
 `;
 
 //Todo component with state management hooks for todos, form inputs (task, notes, tag), and a submit handler that adds new todos and clears the form.
@@ -282,7 +293,7 @@ const ToDo = () => {
                   required
                   maxLength={30}
                 />
-                {newTask.length}/30
+                <Count>{newTask.length}/30</Count>
                 <Input
                   type="text"
                   value={notes}
@@ -291,7 +302,7 @@ const ToDo = () => {
                   aria-label="Write Notes"
                   maxLength={15}
                 />
-                {notes.length}/15
+                <Count>{notes.length}/15</Count>
               </CountWrapper>
             </InputRow>
 
