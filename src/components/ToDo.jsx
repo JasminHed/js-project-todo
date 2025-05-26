@@ -224,6 +224,14 @@ const TaskCount = styled.p`
   color: var(--text-dark);
   text-align: center;
 `;
+
+const CountWrapper = styled.div`
+  font-size: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
 //Todo component with state management hooks for todos, form inputs (task, notes, tag), and a submit handler that adds new todos and clears the form.
 const ToDo = () => {
   const todos = useStore((state) => state.todos);
@@ -264,23 +272,27 @@ const ToDo = () => {
           <Form onSubmit={handleSubmit}>
             <h3>Write your task and notes here.</h3>
             <InputRow>
-              <Input
-                type="text"
-                value={newTask}
-                onChange={(e) => setNewTask(e.target.value)}
-                placeholder="Add task"
-                aria-label="Add a new task"
-                required
-                maxLength={30}
-              />
-              <Input
-                type="text"
-                value={notes}
-                onChange={(e) => setNotes(e.target.value)} //gets the current text from the input field when user types.
-                placeholder="Add notes"
-                aria-label="Write Notes"
-                maxLength={15}
-              />
+              <CountWrapper>
+                <Input
+                  type="text"
+                  value={newTask}
+                  onChange={(e) => setNewTask(e.target.value)}
+                  placeholder="Add task"
+                  aria-label="Add a new task"
+                  required
+                  maxLength={30}
+                />
+                {newTask.length}/30
+                <Input
+                  type="text"
+                  value={notes}
+                  onChange={(e) => setNotes(e.target.value)} //gets the current text from the input field when user types.
+                  placeholder="Add notes"
+                  aria-label="Write Notes"
+                  maxLength={15}
+                />
+                {notes.length}/15
+              </CountWrapper>
             </InputRow>
 
             <TagSelector
