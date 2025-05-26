@@ -159,9 +159,11 @@ const StyledCheckBox = styled.input.attrs({ type: "checkbox" })`
   height: 15px;
   cursor: pointer;
   background-color: var(--accent);
+  border: 1px solid var(--text-dark);
 
   &:checked {
-    border: 1px solid var(--accent);
+    background-color: var(--outline);
+    border: 1px solid var(--text-dark);
   }
 `;
 
