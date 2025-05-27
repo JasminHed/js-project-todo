@@ -166,6 +166,15 @@ const StyledCheckBox = styled.input.attrs({ type: "checkbox" })`
     background-color: var(--outline);
     border: 1px solid var(--text-dark);
   }
+
+  &:checked::after {
+    content: "✔";
+    color: var(--text-dark);
+    position: absolute;
+    font-size: 12px;
+    top: -2px;
+    left: 2px;
+  }
 `;
 
 const TaskText = styled.span`
