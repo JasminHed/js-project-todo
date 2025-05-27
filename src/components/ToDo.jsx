@@ -111,6 +111,7 @@ const AddButton = styled.button`
     width: 80%;
     max-width: 300px;
     margin: 20px auto 0;
+    margin-bottom: 10px;
   }
 
   &:hover,
@@ -226,14 +227,26 @@ const TaskCount = styled.p`
 `;
 
 const CountWrapper = styled.div`
-  font-size: 10px;
   display: flex;
   flex-direction: column;
+  gap: 10px;
   width: 100%;
 
   @media (min-width: 668px) {
-    justify-content: center;
     flex-direction: row;
+    justify-content: center;
+    gap: 24px;
+  }
+`;
+
+const InputCount = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+
+  @media (min-width: 668px) {
+    max-width: 250px;
   }
 `;
 
@@ -241,6 +254,10 @@ const Count = styled.div`
   margin-top: 10px;
   margin-left: 4px;
   margin-right: 2px;
+  min-width: 60px;
+  text-align: right;
+  white-space: nowrap;
+  font-size: 10px;
 `;
 
 //Todo component with state management hooks for todos, form inputs (task, notes, tag), and a submit handler that adds new todos and clears the form.
@@ -284,25 +301,27 @@ const ToDo = () => {
             <h3>Write your task and notes here.</h3>
             <InputRow>
               <CountWrapper>
-                <Input
-                  type="text"
-                  value={newTask}
-                  onChange={(e) => setNewTask(e.target.value)}
-                  placeholder="Add task"
-                  aria-label="Add a new task"
-                  required
-                  maxLength={30}
-                />
-                <Count>{newTask.length}/30</Count>
-                <Input
-                  type="text"
-                  value={notes}
-                  onChange={(e) => setNotes(e.target.value)} //gets the current text from the input field when user types.
-                  placeholder="Add notes"
-                  aria-label="Write Notes"
-                  maxLength={15}
-                />
-                <Count>{notes.length}/15</Count>
+                <InputCount>
+                  <Input
+                    type="text"
+                    value={newTask}
+                    onChange={(e) => setNewTask(e.target.value)}
+                    placeholder="Add task"
+                    aria-label="Add a new task"
+                    required
+                    maxLength={30}
+                  />
+                  <Count>{newTask.length}/30</Count>
+                  <Input
+                    type="text"
+                    value={notes}
+                    onChange={(e) => setNotes(e.target.value)} //gets the current text from the input field when user types.
+                    placeholder="Add notes"
+                    aria-label="Write Notes"
+                    maxLength={15}
+                  />
+                  <Count>{notes.length}/15</Count>
+                </InputCount>
               </CountWrapper>
             </InputRow>
 
@@ -325,8 +344,12 @@ const ToDo = () => {
               {todos.map((todo) => (
                 <TodoItem key={todo.id}>
                   <TaskText $completed={todo.completed}>{todo.text}</TaskText>
-                  {todo.tag && <TagDot tag={todo.tag} />}
-                  <NotesText>{todo.notes}</NotesText>
+                  {todo.tag ? (
+                    <TagDot tag={todo.tag} />
+                  ) : (
+                    <div style={{ height: "12px" }} />
+                  )}
+                  <NotesText>{todo.notes || <span>&nbsp;</span>}</NotesText>
                   <StyledCheckBox
                     checked={todo.completed}
                     onChange={() => toggleTodo(todo.id)}
