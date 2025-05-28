@@ -17,6 +17,7 @@ const Dot = styled.span`
 
   @media (max-width: 667px) {
     margin: 6px 0;
+    margin-top: 10px;
   }
 `;
 

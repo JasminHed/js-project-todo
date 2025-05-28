@@ -6,8 +6,6 @@ const TodoItemContainer = styled.li`
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  //display: grid;
-  //grid-template-columns: 50px 12px 90px 25px 75px;
   padding: 6px;
   gap: 2px;
   align-items: center;
@@ -18,13 +16,6 @@ const TodoItemContainer = styled.li`
   @media (max-width: 667px) {
     gap: 2px;
   }
-
-  /*@media (min-width: 481px) and (max-width: 668px) {
-    display: grid;
-    grid-template-columns: 120px 15px 180px 40px 80px;
-    padding: 10px;
-    gap: 6px;
-  }*/
 
   @media (min-width: 668px) {
     display: grid;
@@ -60,7 +51,6 @@ const StyledCheckBox = styled.input.attrs({ type: "checkbox" })`
   }
 
   @media (max-width: 667px) {
-    margin: 3px 0;
     transform: scale(1.5);
   }
 `;
@@ -88,8 +78,9 @@ const RemoveButton = styled.button`
   cursor: pointer;
 
   @media (max-width: 667px) {
-    margin-top: 12px;
+    margin-top: 20px;
     padding: 8px 16px;
+    width: 120px;
   }
 
   @media (min-width: 668px) {
