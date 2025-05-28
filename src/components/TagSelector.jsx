@@ -6,15 +6,15 @@ const TagWrapper = styled.div`
   gap: 8px;
   margin-top: 12px;
   justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
 `;
 
 const TagButton = styled.button.attrs({ type: "button" })`
   background-color: ${(props) => props.color};
   color: var(--text-dark);
-  margin-top: 20px;
-  margin-bottom: 20px;
   border: ${(props) =>
-    props.selected ? "2px solid var(--text-dark)" : "none"};
+    props.selected ? "1px solid var(--text-dark)" : "1px solid transparent"};
   border-radius: 8px;
   justify-content: center;
   padding: 6px 12px;
