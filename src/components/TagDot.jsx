@@ -13,7 +13,11 @@ const Dot = styled.span`
   width: 12px;
   height: 12px;
   display: inline-block;
-  margin-right: 8px;
+  margin-left: 10px;
+
+  @media (max-width: 667px) {
+    margin: 6px 0;
+  }
 `;
 
 const TagDot = ({ tag }) => {

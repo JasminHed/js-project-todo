@@ -4,14 +4,27 @@ import TagDot from "./TagDot.jsx";
 
 const TodoItemContainer = styled.li`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: nowrap;
+  //display: grid;
+  //grid-template-columns: 50px 12px 90px 25px 75px;
+  padding: 6px;
+  gap: 2px;
   align-items: center;
-  padding: 10px;
   width: 100%;
   max-width: 800px;
   border-bottom: 1px solid var(--outline);
-  gap: 6px;
+
+  @media (max-width: 667px) {
+    gap: 2px;
+  }
+
+  /*@media (min-width: 481px) and (max-width: 668px) {
+    display: grid;
+    grid-template-columns: 120px 15px 180px 40px 80px;
+    padding: 10px;
+    gap: 6px;
+  }*/
 
   @media (min-width: 668px) {
     display: grid;
@@ -45,6 +58,11 @@ const StyledCheckBox = styled.input.attrs({ type: "checkbox" })`
     top: -2px;
     left: 2px;
   }
+
+  @media (max-width: 667px) {
+    margin: 3px 0;
+    transform: scale(1.5);
+  }
 `;
 
 const TaskText = styled.span`
@@ -54,6 +72,12 @@ const TaskText = styled.span`
   text-decoration: ${(props) => (props.$completed ? "line-through" : "none")};
   color: var(--text-dark);
   min-width: 100px;
+
+  @media (max-width: 667px) {
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 3px;
+  }
 `;
 
 const RemoveButton = styled.button`
@@ -62,6 +86,11 @@ const RemoveButton = styled.button`
   width: 80px;
   padding: 5px;
   cursor: pointer;
+
+  @media (max-width: 667px) {
+    margin-top: 12px;
+    padding: 8px 16px;
+  }
 
   @media (min-width: 668px) {
     width: 100px;
@@ -78,8 +107,8 @@ const RemoveButton = styled.button`
 const NotesText = styled.span`
   word-break: break-word;
 
-  @media (max-width: 668px) {
-    display: none;
+  @media (max-width: 667px) {
+    visibility: hidden;
   }
 `;
 

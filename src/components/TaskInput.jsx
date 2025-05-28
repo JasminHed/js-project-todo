@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import TagSelector from "./TagSelector.jsx";
 
@@ -38,6 +38,30 @@ const InputRow = styled.div`
   }
 `;
 
+const InputCount = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+
+  @media (min-width: 668px) {
+    max-width: 250px;
+  }
+`;
+
+const CountWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+
+  @media (min-width: 668px) {
+    flex-direction: row;
+    justify-content: center;
+    gap: 24px;
+  }
+`;
+
 const Input = styled.input`
   padding: 12px 16px;
   border: none;
@@ -51,6 +75,16 @@ const Input = styled.input`
   &:focus {
     outline: 2px solid var(--outline);
   }
+`;
+
+const Count = styled.div`
+  margin-top: 10px;
+  margin-left: 4px;
+  margin-right: 2px;
+  min-width: 60px;
+  text-align: right;
+  white-space: nowrap;
+  font-size: 10px;
 `;
 
 const AddButton = styled.button`
@@ -76,65 +110,15 @@ const AddButton = styled.button`
   }
 `;
 
-const CountWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-
-  @media (min-width: 668px) {
-    flex-direction: row;
-    justify-content: center;
-    gap: 24px;
-  }
-`;
-
-const InputCount = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  width: 100%;
-
-  @media (min-width: 668px) {
-    max-width: 250px;
-  }
-`;
-
-const Count = styled.div`
-  margin-top: 10px;
-  margin-left: 4px;
-  margin-right: 2px;
-  min-width: 60px;
-  text-align: right;
-  white-space: nowrap;
-  font-size: 10px;
-`;
-
-const ErrorMessage = styled.p`
-  color: red;
-  font-size: 10px;
-  text-align: center;
-  min-height: 15px;
-`;
-
-const TodoForm = ({ onAddTodo }) => {
-  const [newTask, setNewTask] = useState("");
-  const [notes, setNotes] = useState("");
-  const [selectedTag, setSelectedTag] = useState(null);
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmitted(true);
-    if (newTask.trim() && selectedTag) {
-      onAddTodo(newTask, notes, selectedTag);
-      setNewTask("");
-      setNotes("");
-      setSelectedTag(null);
-      setSubmitted(false);
-    }
-  };
-
+const TaskInput = ({
+  newTask,
+  setNewTask,
+  notes,
+  setNotes,
+  selectedTag,
+  setSelectedTag,
+  handleSubmit,
+}) => {
   return (
     <Form onSubmit={handleSubmit}>
       <h3>Write your task and notes here.</h3>
@@ -151,6 +135,8 @@ const TodoForm = ({ onAddTodo }) => {
               maxLength={30}
             />
             <Count>{newTask.length}/30</Count>
+          </InputCount>
+          <InputCount>
             <Input
               type="text"
               value={notes}
@@ -165,9 +151,6 @@ const TodoForm = ({ onAddTodo }) => {
       </InputRow>
 
       <TagSelector selectedTag={selectedTag} setSelectedTag={setSelectedTag} />
-      {!selectedTag && submitted && (
-        <ErrorMessage>Please select a tag</ErrorMessage>
-      )}
 
       <AddButton type="submit" aria-label="Add a new task">
         Add Task
@@ -176,4 +159,4 @@ const TodoForm = ({ onAddTodo }) => {
   );
 };
 
-export default TodoForm;
+export default TaskInput;
