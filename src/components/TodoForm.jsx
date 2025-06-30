@@ -136,13 +136,6 @@ const TodoForm = ({ onAddTodo }) => {
     }
   };
 
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      handleSubmit(e);
-    }
-  };
-
   return (
     <Form onSubmit={handleSubmit}>
       <h3>Write your task and notes here.</h3>
@@ -153,7 +146,6 @@ const TodoForm = ({ onAddTodo }) => {
               type="text"
               value={newTask}
               onChange={(e) => setNewTask(e.target.value)}
-              onKeyDown={handleKeyDown}
               placeholder="Add task"
               aria-label="Add a new task"
               required
@@ -164,7 +156,6 @@ const TodoForm = ({ onAddTodo }) => {
               type="text"
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              onKeyDown={handleKeyDown}
               placeholder="Add notes"
               aria-label="Write Notes"
               maxLength={15}
