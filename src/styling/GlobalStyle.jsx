@@ -18,15 +18,15 @@ body {
   min-height: 100vh;
   line-height: 1.6;
   font-size: 16px;
-  background-color: var(--background-color);
-  background-image: 
-  linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url("/assets/Background5.jpg");
+  //background-image: 
+  //linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url("/assets/Background5.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   font-family: 'Poppins', sans-serif;
   background-position: center;
   color: var(--text-dark);
-  background-color: var(--card-bg);
+  background: #D6ECFF;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
 
 }
 
@@ -52,7 +52,7 @@ background-position: bottom center;
 }
 
 :root {
-  --background-color: #fdf6f0; 
+  --background-color: #FFF4B1; 
   --text-color: #ffffff;
   --outline: #a1887f;
   --card-bg: #ffffff99;; 
