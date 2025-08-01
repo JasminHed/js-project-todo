@@ -108,7 +108,7 @@ const Count = styled.div`
   min-width: 60px;
   text-align: right;
   white-space: nowrap;
-  font-size: 10px;
+  font-size: 14px;
 `;
 
 const ErrorMessage = styled.p`

@@ -18,8 +18,6 @@ body {
   min-height: 100vh;
   line-height: 1.6;
   font-size: 16px;
-  //background-image: 
-  //linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url("/assets/Background5.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   font-family: 'Poppins', sans-serif;
